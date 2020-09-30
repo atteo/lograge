@@ -23,7 +23,9 @@ module ActionCable
       private
 
       def notification_payload(method_name)
-        { channel_class: self.class.name, action: method_name }
+        payload = { channel_class: self.class.name, action: method_name }
+        append_info_to_payload(payload)
+        payload
       end
     end
   end

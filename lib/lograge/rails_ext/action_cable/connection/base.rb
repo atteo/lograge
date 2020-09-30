@@ -35,7 +35,9 @@ module ActionCable
       private
 
       def notification_payload(method_name)
-        { connection_class: self.class.name, action: method_name, data: request.params }
+        payload = { connection_class: self.class.name, action: method_name, data: request.params }
+        append_info_to_payload(payload)
+        payload
       end
     end
   end
